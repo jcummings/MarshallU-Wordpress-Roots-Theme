@@ -29,7 +29,7 @@ function roots_scripts() {
   // It's kept in the header instead of footer to avoid conflicts with plugins.
   if (!is_admin() && current_theme_supports('jquery-cdn')) {
     wp_deregister_script('jquery');
-    wp_register_script('jquery', '//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js', false, null, false);
+    wp_register_script('jquery', '//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js', false, null, false);
     add_filter('script_loader_src', 'roots_jquery_local_fallback', 10, 2);
   }
 
@@ -52,7 +52,7 @@ function roots_jquery_local_fallback($src, $handle) {
   static $add_jquery_fallback = false;
 
   if ($add_jquery_fallback) {
-    echo '<script>window.jQuery || document.write(\'<script src="' . get_template_directory_uri() . '/assets/js/vendor/jquery-1.9.1.min.js"><\/script>\')</script>' . "\n";
+    echo '<script>window.jQuery || document.write(\'<script src="' . get_template_directory_uri() . '/assets/js/vendor/jquery-1.8.3.min.js"><\/script>\')</script>' . "\n";
     $add_jquery_fallback = false;
   }
 
