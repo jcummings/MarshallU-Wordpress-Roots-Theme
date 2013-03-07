@@ -12,6 +12,7 @@
   ?>
 <div id="wrapper" class="clearfix">
   <div id="wrap" class="container" role="document">
+   <?php include get_template_part('templates/hero'); ?>
     <div class="content row">
       <div class="main <?php echo roots_main_class(); ?>" role="main">
         <?php include roots_template_path(); ?>
