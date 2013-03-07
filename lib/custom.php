@@ -1,8 +1,7 @@
 <?php
 
 // Custom functions
-require_once locate_template('/lib/custom-install.php' );
-include locate_template('/lib/theme-options.php' );
+
 function enqueue_csesearchbox() {
 	wp_register_script( 'csesearchbox', 'http://www.google.com/cse/brand?form=cse-search-box&amp;lang=en',
 		array( 'jquery' ),
