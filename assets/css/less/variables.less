@@ -11,7 +11,7 @@
 // -------------------------
 @black:                 #000;
 @grayDarker:            #222;
-@grayDark:              #333;
+@grayDark:              #444;
 @gray:                  #555;
 @grayLight:             #999;
 @grayLighter:           #eee;
@@ -21,13 +21,15 @@
 // Accent colors
 // -------------------------
 @blue:                  #049cdb;
-@blueDark:              #0064cd;
-@green:                 #46a546;
-@red:                   #9d261d;
-@yellow:                #ffc40d;
-@orange:                #f89406;
+@blueDark:              #27318B;
+@greenLight:            lighten(@green, 10%);
+@green:                 #04954A;
+@greenDark:             darken(@green, 15%);
+@red:                   #BF311A;
+@yellow:                #C4960C;
+@orange:                #BC5000;
 @pink:                  #c3325f;
-@purple:                #7a43b6;
+@purple:                #56004E;
 
 
 // Scaffolding
@@ -38,24 +40,25 @@
 
 // Links
 // -------------------------
-@linkColor:             #08c;
-@linkColorHover:        darken(@linkColor, 15%);
+@linkColor:             darken(@green, 4%);
+@linkColorHover:        darken(@linkColor, 8%);
 
 
 // Typography
 // -------------------------
 @sansFontFamily:        "Helvetica Neue", Helvetica, Arial, sans-serif;
-@serifFontFamily:       Georgia, "Times New Roman", Times, serif;
-@monoFontFamily:        Monaco, Menlo, Consolas, "Courier New", monospace;
+@serifFontFamily:       "Times New Roman", Times, serif;
+@monoFontFamily:        Menlo, Monaco, Consolas, "Courier New", monospace;
+@subFontFamily:         'Open Sans Condensed',sans-serif;
 
-@baseFontSize:          14px;
+@baseFontSize:          16px;
 @baseFontFamily:        @sansFontFamily;
-@baseLineHeight:        20px;
+@baseLineHeight:        23.04px;
 @altFontFamily:         @serifFontFamily;
 
-@headingsFontFamily:    inherit; // empty to use BS default, @baseFontFamily
-@headingsFontWeight:    bold;    // instead of browser default, bold
-@headingsColor:         inherit; // empty to use BS default, @textColor
+@headingsFontFamily:    @subFontFamily; // empty to use BS default, @baseFontFamily
+@headingsFontWeight:    normal;    // instead of browser default, bold
+@headingsColor:         @gray; // empty to use BS default, @textColor
 
 
 // Component sizing
@@ -88,8 +91,8 @@
 @btnBackgroundHighlight:            darken(@white, 10%);
 @btnBorder:                         #ccc;
 
-@btnPrimaryBackground:              @linkColor;
-@btnPrimaryBackgroundHighlight:     spin(@btnPrimaryBackground, 20%);
+@btnPrimaryBackground:              @greenLight;
+@btnPrimaryBackgroundHighlight:     darken(@green, 10%);
 
 @btnInfoBackground:                 #5bc0de;
 @btnInfoBackgroundHighlight:        #2f96b4;
@@ -151,7 +154,7 @@
 
 // Sprite icons path
 // -------------------------
-@iconSpritePath:          "../img/glyphicons-halflings.png";
+@iconSpritePath:          "../img/glyphicons-halflings-extended.png";
 @iconWhiteSpritePath:     "../img/glyphicons-halflings-white.png";
 
 
@@ -177,18 +180,21 @@
 
 // Navbar
 // -------------------------
+
+@navbarHeight:                    45px;
+@navbarBackground:                @black;
+@navbarBackgroundHighlight:       @grayDark;
+@navbarBorder:                    lighten(@navbarBackground, 1%);
+
+@navbarText:                      @white;
+@navbarLinkColor:                 @grayLight;
+@navbarLinkColorHover:            @green;
+@navbarLinkColorActive:           @navbarLinkColorHover;
+
 @navbarCollapseWidth:             979px;
 @navbarCollapseDesktopWidth:      @navbarCollapseWidth + 1;
 
-@navbarHeight:                    40px;
-@navbarBackgroundHighlight:       #ffffff;
-@navbarBackground:                darken(@navbarBackgroundHighlight, 5%);
-@navbarBorder:                    darken(@navbarBackground, 12%);
 
-@navbarText:                      #777;
-@navbarLinkColor:                 #777;
-@navbarLinkColorHover:            @grayDark;
-@navbarLinkColorActive:           @gray;
 @navbarLinkBackgroundHover:       transparent;
 @navbarLinkBackgroundActive:      darken(@navbarBackground, 5%);
 

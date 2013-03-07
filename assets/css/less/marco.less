@@ -1,0 +1,269 @@
+//Marco.less -- Basic Marco structure and theming.
+//--------------------------------------------------
+// HTML & Body
+html, body {
+  height: 100%;
+}
+body {
+  position: relative;
+  margin: 0;
+  padding: 0;
+  padding-top: 40px;
+  background: @white url('../img/overlay.png') repeat;
+  height: 100%;
+}
+//Non-Semantic Helper Classes
+.visuallyhidden { border: 0; clip: rect(0 0 0 0); height: 1px; margin: -1px; overflow: hidden; padding: 0; position: absolute; width: 1px; }
+.visuallyhidden.focusable:active, .visuallyhidden.focusable:focus { clip: auto; height: auto; margin: 0; overflow: visible; position: static; width: auto; }
+.invisible { visibility: hidden; }
+.clear {
+  clear: both;
+  display: block;
+  overflow: hidden;
+  visibility: hidden;
+  width: 0;
+  height: 0;
+}
+// Alignment
+.alignleft {
+    display: inline;
+    float: left;
+    margin-right: 1.625em;
+}
+p.alignleft {
+  text-align: left;
+}
+.aligncenter {
+    clear: both;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+p.aligncenter {
+  text-align: center;
+}
+.alignright {
+	display: inline;
+	float: right;
+	margin-left: 1.625em;
+}
+p.alignright {
+  text-align: right;
+}
+//Base ----------------------------------------------------------------
+/*
+ * Remove text-shadow in selection highlight: h5bp.com/i
+ */
+::-moz-selection { background: @grayDark; color: #fff; text-shadow: none; }
+::selection { background: @grayDark; color: #fff; text-shadow: none; }
+//Wrapper
+#wrapper {
+  min-height: 100%;
+  height: auto !important;
+  height: 100%;
+  margin: 0 auto -130px;
+  background: transparent url('../img/grid_noise.jpg') repeat-x left -2px;
+}
+#content.container, #wrap {
+ background: @white;
+ .box-shadow(0 0 20px rgba(0,0,0,0.5));
+ padding: 20px;
+ .border-radius(5px);
+ border: darken(@white, 15%) 1px solid;
+ margin: 20px auto 25px auto;
+}
+//Branding --------------------------------------------------------------
+#branding {
+ background: #f5f5f5;   
+}
+.hero-unit h1 {
+text-shadow: 1px 1px #fff,-1px -1px #999;
+color: #bbb;
+font-family: @serifFontFamily;
+}
+.navbar a.brand {
+ text-indent: -9000px;
+ width: 159px;
+ height: 42px;
+ overflow: hidden;
+ padding: 0;
+ background: transparent url('../img/mu_header_logo.png') no-repeat left center;
+ background-size: auto 40px;
+ }
+.page-header.hero-unit {
+ padding: 10px;
+ margin-top: 0;
+ background-color: #fafafa;
+ h1 {
+	 font-size: 45.234px;
+     color: @grayDark;
+  a {
+	color: @grayDark;
+	text-decoration: none;
+	}
+   }
+   p {
+	line-height: 18px*1.44;  
+  }
+}
+
+// Typography & Headings
+// -------------------------
+
+h1 { font-size: 31.990px; line-height: 31.990px*1.44; }
+h2 { font-size: 26px; line-height: 26px*1.44; }
+h3 { font-size: 22.624px; line-height: 22.624px*1.44; }
+h4 { font-size: 18.388px; line-height: 18.388px*1.44; }
+h5 { font-size: 16px; line-height: 16px*1.44; }
+h6 { font-size: 13.004px; line-height: 13.004px*1.44; }
+
+h1 small { font-size: 22.624px; }
+h2 small { font-size: 18.388px; }
+h3 small { font-size: 16px; }
+h4 small { font-size: 13.004px; }
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 0 0 (@baseLineHeight / 2);
+}
+  
+.lead {
+  margin-bottom: @baseLineHeight;
+  font-size: @baseFontSize * 1.4;
+  font-weight: 200;
+  line-height: @baseLineHeight * 1.46;
+}
+//Page Elements -------------------------------------------------------
+hr {
+ margin: @baseLineHeight / 2 0;
+}
+img {
+height: auto;
+}
+
+.btn.wide {
+ width: auto;
+ display: block;
+ padding-right: 9px;
+ padding-left: 9px;
+ }
+.nav-list .divider {
+height: 1px;
+margin: 8px 1px;
+overflow: hidden;
+background-color: #e5e5e5;
+border-bottom: 1px solid #ffffff;
+}
+// Blockquotes
+blockquote {
+  border-left: 5px solid @green;
+ &.pull-right {
+    border-left: 0;
+    border-right: 5px solid @green;
+  }
+}
+// Well 
+.well {
+background: white;
+padding: 10px;
+}
+//Custom Icons
+.icon-emergency {
+    background: url("../img/emergency_icon.png") no-repeat center center;
+}
+.icon-rss                     { background-position: 0      -168px; }
+.icon-smugmug                 { background-position: -24px  -168px; }
+.icon-twitter                 { background-position: -48px  -168px; }
+.icon-facebook                { background-position: -72px  -168px; }
+.icon-youtube                 { background-position: -96px  -168px; }
+
+//ZURB responsive Embeds video on all devices http://www.zurb.com/article/865/responsive-video-embeds-on-all-devices 
+
+.flex-video {
+  position: relative;
+  padding-top: 25px;
+  padding-bottom: 67.5%;
+  height: 0;
+  margin-bottom: 16px;
+  overflow: hidden;
+}
+
+.flex-video.widescreen, .entry-content-asset.widescreen { padding-bottom: 57.25%; }
+.flex-video.vimeo, .entry-content-asset.vimeo { padding-top: 0; }
+
+.flex-video iframe,
+.entry-content-asset iframe,
+.flex-video object,
+.entry-content-asset object,
+.flex-video embed
+.entry-content-asset embed {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+@media only screen and (max-device-width: 800px), only screen and (device-width: 1024px) and (device-height: 600px), only screen and (width: 1280px) and (orientation: landscape), only screen and (device-width: 800px), only screen and (max-width: 767px) {
+  .flex-video { padding-top: 0; }
+}
+
+
+//Media Specific ----------------------------------------------------------
+@media (max-width: 980px) {
+      /* Remove any padding from the body */
+  body {
+    padding-top: 0;
+  }
+  .navbar .nav > li > a, .navbar .dropdown-menu a {
+ color: #fff !important;
+}
+   #primary-nav .container {
+   width: auto;
+   }
+footer {
+padding-top: 20px;
+}
+}
+@media (max-width: 768px) {
+  body {
+    margin-top: 0;
+  }
+   #wrapper {
+   background: none;
+   margin-top: 0;
+   padding: 0;
+   .box-shadow(0 0 0 rgba(0,0,0,0));
+   padding-top: 20px;
+   .border-radius(0);
+   border: 0;
+   margin-left: -20px;
+   margin-right: -20px;
+   }
+
+footer {
+margin-left: -20px;
+margin-right: -20px;
+}
+}
+
+.heading-shadow {
+    text-shadow: 1px 1px 0 #FAFAFA, 2px 2px 0 rgba(95, 149, 176, 0.5), 0 0 1px #FAFAFA;
+}
+@media (max-width: 767px) {
+#primary-nav {    margin-left: -20px;
+margin-right: -20px;
+}
+}
+//Retina Display Specific ---------------------------------------
+@media(-webkit-min-device-pixel-ratio: 2) {
+    .navbar a.brand {
+background:transparent url('../img/mu_header_logo-2x.png') no-repeat left center; background-size:138px 40px;
+ }
+}
+//Imported Font Faces
+
+@font-face {
+  font-family: 'Open Sans Condensed';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Open Sans Condensed Bold'), local('OpenSans-CondensedBold'), url(http://themes.googleusercontent.com/static/fonts/opensanscondensed/v6/gk5FxslNkTTHtojXrkp-xM6Eyu0BCqAfob_z3hhzRFzr7w4p9aSvGirXi6XmeXNA.woff) format('woff');
+}
