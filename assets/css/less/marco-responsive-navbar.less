@@ -1,0 +1,146 @@
+//
+// Responsive: SubNavbar
+// --------------------------------------------------
+
+
+// TABLETS AND BELOW
+// -----------------
+@media (max-width: @navbarCollapseWidth) {
+
+  // COLLAPSIBLE NAVBAR
+  // ------------------
+  // Nav collapse clears brand
+  .subnav-collapse {
+    clear: both;
+  }
+  // Block-level the nav
+  .subnav-collapse .nav {
+    float: none;
+    margin: 0 0 (@baseLineHeight / 2);
+  }
+  .subnav-collapse .nav > li {
+    float: none;
+  }
+  .subnav-collapse .nav > li > a {
+    margin-bottom: 2px;
+  }
+  .subnav-collapse .nav > .divider-vertical {
+    display: none;
+  }
+  .subnav-collapse .nav .nav-header {
+    color: @navbarText;
+    text-shadow: none;
+  }
+  // Nav and dropdown links in navbar
+  .subnav-collapse .nav > li > a,
+  .subnav-collapse .dropdown-menu a {
+    padding: 9px 15px;
+    font-weight: bold;
+    color: @navbarLinkColor;
+    .border-radius(3px);
+  }
+  // Buttons
+  .subnav-collapse .btn {
+    padding: 4px 10px 4px;
+    font-weight: normal;
+    .border-radius(@baseBorderRadius);
+  }
+  .subnav-collapse .dropdown-menu li + li a {
+    margin-bottom: 2px;
+  }
+  .subnav-collapse .nav > li > a:hover,
+  .subnav-collapse .nav > li > a:focus,
+  .subnav-collapse .dropdown-menu a:hover,
+  .subnav-collapse .dropdown-menu a:focus {
+    background-color: @navbarBackground;
+  }
+  .navbar-inverse .subnav-collapse .nav > li > a,
+  .navbar-inverse .subnav-collapse .dropdown-menu a {
+    color: @navbarInverseLinkColor;
+  }
+  .navbar-inverse .subnav-collapse .nav > li > a:hover,
+  .navbar-inverse .subnav-collapse .nav > li > a:focus,
+  .navbar-inverse .subnav-collapse .dropdown-menu a:hover,
+  .navbar-inverse .subnav-collapse .dropdown-menu a:focus {
+    background-color: @navbarInverseBackground;
+  }
+  // Buttons in the navbar
+  .subnav-collapse.in .btn-group {
+    margin-top: 5px;
+    padding: 0;
+  }
+  // Dropdowns in the navbar
+  .subnav-collapse .dropdown-menu {
+    position: static;
+    top: auto;
+    left: auto;
+    float: none;
+    display: none;
+    max-width: none;
+    margin: 0 15px;
+    padding: 0;
+    background-color: transparent;
+    border: none;
+    .border-radius(0);
+    .box-shadow(none);
+  }
+  .subnav-collapse .open > .dropdown-menu { 
+    display: block; 
+  }
+
+  .subnav-collapse .dropdown-menu:before,
+  .subnav-collapse .dropdown-menu:after {
+    display: none;
+  }
+  .subnav-collapse .dropdown-menu .divider {
+    display: none;
+  }
+  .subnav-collapse .nav > li > .dropdown-menu {
+    &:before,
+    &:after {
+      display: none;
+    }
+  }
+  // Forms in navbar
+  .subnav-collapse .navbar-form,
+  .subnav-collapse .navbar-search {
+    float: none;
+    padding: (@baseLineHeight / 2) 15px;
+    margin: (@baseLineHeight / 2) 0;
+    border-top: 1px solid @navbarBackground;
+    border-bottom: 1px solid @navbarBackground;
+    .box-shadow(~"inset 0 1px 0 rgba(255,255,255,.1), 0 1px 0 rgba(255,255,255,.1)");
+  }
+  .navbar-inverse .subnav-collapse .navbar-form,
+  .navbar-inverse .subnav-collapse .navbar-search {
+    border-top-color: @navbarInverseBackground;
+    border-bottom-color: @navbarInverseBackground;
+  }
+  // Pull right (secondary) nav content
+  .navbar .subnav-collapse .nav.pull-right {
+    float: none;
+    margin-left: 0;
+  }
+  // Hide everything in the navbar save .brand and toggle button */
+  .subnav-collapse,
+  .subnav-collapse.collapse {
+    overflow: hidden;
+    height: 0;
+  }
+
+
+}
+
+
+// DEFAULT DESKTOP
+// ---------------
+
+@media (min-width: @navbarCollapseDesktopWidth) {
+
+  // Required to make the collapsing navbar work on regular desktops
+  .subnav-collapse.collapse {
+    height: auto !important;
+    overflow: visible !important;
+  }
+
+}

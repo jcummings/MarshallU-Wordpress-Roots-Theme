@@ -1,5 +1,5 @@
 <header id="branding" class="banner" role="banner">
-  <nav id="secondary-nav" class="navbar navbar-fixed-top" role="navigation">
+  <nav id="secondary-nav" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
 		<div class="navbar-inner">
 			<div class="container">
 				<?php
@@ -8,7 +8,7 @@ if ( has_nav_menu( 'toolbar' ) ) {?>
 				<?php } ?>
 				<a class="brand" href="http://www.marshall.edu">Marshall University</a>
 				<div class="nav-collapse collapse">
-				       <form action="http://www.marshall.edu/searchresults.asp" id="cse-search-box" class="navbar-search">
+				       <form action="http://www.marshall.edu/searchresults.asp" id="cse-search-box" class="navbar-search pull-right">
             <input type="hidden" name="cx" value="010773603321931097386:xheprsjc1a8" />
             <input type="hidden" name="cof" value="FORID:10" />
             <input type="hidden" name="ie" value="UTF-8" />
@@ -38,5 +38,5 @@ if ( has_nav_menu( 'marshall-menu' ) ) {?>
 		</div>
 	</nav>
 	<?php }?>
-		</header>
+        </header>
 <?php roots_header_after(); ?>

@@ -95,7 +95,7 @@ function roots_htaccess_writable() {
     }
   }
 }
-add_action('admin_init', 'roots_htaccess_writable');
+//add_action('admin_init', 'roots_htaccess_writable');
 
 /**
  * Return WordPress subdirectory if applicable
