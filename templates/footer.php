@@ -31,15 +31,15 @@ document.write('<a href="//muwww-new.marshall.edu/go/index.php?action=shorturl&u
   (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
     g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
     s.parentNode.insertBefore(g,s)}(document,'script'));
-
-  google.load('search', '1');
+</script>
+<?php endif; ?>
+<script>
+ google.load('search', '1');
   google.setOnLoadCallback(function() {
     google.search.CustomSearchControl.attachAutoCompletion(
       '010773603321931097386:xheprsjc1a8',
       document.getElementById('q'),
       'cse-search-box');
   });
-</script>
-<?php endif; ?>
-
+  </script>
 <?php wp_footer(); ?>

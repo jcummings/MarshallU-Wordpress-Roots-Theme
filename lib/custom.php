@@ -3,18 +3,18 @@
 // Custom functions
 
 function enqueue_csesearchbox() {
-	wp_register_script( 'csesearchbox', 'http://www.google.com/cse/brand?form=cse-search-box&amp;lang=en',
+	wp_register_script( 'csesearchbox', '//www.google.com/cse/brand?form=cse-search-box&amp;lang=en',
 		array( 'jquery' ),
 		'1.0' );
-	wp_enqueue_script( 'csesearchbox', 'http://www.google.com/cse/brand?form=cse-search-box&amp;lang=en', array( 'jquery' ), '1.0', true );
+	wp_enqueue_script( 'csesearchbox', '//www.google.com/cse/brand?form=cse-search-box&amp;lang=en', array( 'jquery' ), '1.0', true );
 }
 add_action( 'wp_enqueue_scripts', 'enqueue_csesearchbox' );
 
 function enqueue_jsapi() {
-	wp_register_script( 'jsapi', 'http://www.google.com/jsapi',
+	wp_register_script( 'jsapi', '//www.google.com/jsapi',
 		array( 'jquery' ),
 		'1.0' );
-	wp_enqueue_script( 'jsapi', 'http://www.google.com/jsapi', array( 'jquery' ), '1.0', false );
+	wp_enqueue_script( 'jsapi', '//www.google.com/jsapi', array( 'jquery' ), '1.0', false );
 }
 add_action( 'wp_enqueue_scripts', 'enqueue_jsapi' );
 
