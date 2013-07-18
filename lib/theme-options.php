@@ -170,7 +170,7 @@ add_action ( 'hero_unit_hook', 'hero_box', 11);
 ?>
 <?php 
 //mu_roots Super Admin Theme Options Page 
-add_action('admin_init', 'mu_roots_super_options_init_fn' );
+//add_action('admin_init', 'mu_roots_super_options_init_fn' );
 
 add_action( 'admin_menu', 'mu_roots_admin_menu');
 
