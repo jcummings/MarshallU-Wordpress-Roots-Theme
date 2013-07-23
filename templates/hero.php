@@ -4,6 +4,7 @@
     </a></h1>
   <?php  if (is_front_page()) { hero_unit_hook(); } ?>
 </section>
+
 <?php if ( has_nav_menu( 'primary_navigation' )){ ?><nav id="site-nav" class="navbar">
 <div class="navbar-inner">
   <div class="container">

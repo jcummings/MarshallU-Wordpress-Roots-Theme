@@ -105,7 +105,12 @@ if ( ! is_front_page() ) {
 the_post_thumbnail( 'full');
 }
 }
-add_action('roots_pageheader_before','kia_add_thumbnail');
+add_action('roots_content_before','kia_add_thumbnail');
+
+if ( function_exists( 'add_image_size' ) ) {
+// additional image sizes
+add_image_size( 'masthead-image', 1170, 300, true ); //300 pixels wide (and unlimited height)
+} 
 
 function myformatTinyMCE($in)
 {
