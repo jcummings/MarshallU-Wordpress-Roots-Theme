@@ -10,7 +10,7 @@
   <div class="container">
 <a class="btn btn-navbar" data-toggle="collapse" data-target=".subnav-collapse"> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </a>
       <div class="subnav-collapse collapse">
-        <?php wp_nav_menu( array('theme_location' => 'primary_navigation', 'menu_class' => 'nav nav-pills', 'fallback_cb' => '') ); ?>
+        <?php wp_nav_menu( array('theme_location' => 'primary_navigation', 'menu_class' => 'nav', 'fallback_cb' => '') ); ?>
     </div>
   </div>
   </div>
