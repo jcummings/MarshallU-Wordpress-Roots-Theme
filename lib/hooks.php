@@ -31,4 +31,5 @@ function roots_footer_after() { do_action('roots_footer_after'); }
 //function roots_footer() { do_action('roots_footer'); }
 //Setup Hooks
 function hero_unit_hook() { do_action('hero_unit_hook'); }
+function masthead_hook() { do_action('masthead_hook'); }
 function roots_pageheader_before() { do_action('roots_pageheader_before'); }

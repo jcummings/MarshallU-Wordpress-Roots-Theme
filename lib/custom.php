@@ -99,18 +99,25 @@ $wp_meta_boxes['dashboard']['side']['core']['muroots_dashboard_widget_coding'] =
 add_action('wp_dashboard_setup', 'add_muroots_dashboard_widget');
 
 // Add features images to pages
-function kia_add_thumbnail(){
-
-if ( ! is_front_page() ) {
-the_post_thumbnail( 'full');
-}
-}
-add_action('roots_content_before','kia_add_thumbnail');
-
-if ( function_exists( 'add_image_size' ) ) {
+if ( function_exists( 'add_theme_support' ) ) { 
+add_theme_support( 'post-thumbnails');
+set_post_thumbnail_size( 150, 150, true ); // default Post Thumbnail dimensions (cropped)
 // additional image sizes
-add_image_size( 'masthead-image', 1170, 300, true ); //300 pixels wide (and unlimited height)
-} 
+// delete the next line if you do not need additional image sizes
+}
+if ( function_exists( 'add_image_size' ) ) { 
+	add_image_size( 'masthead-image', 1170, 300, true ); //(cropped)
+}
+
+function masthead_add_thumbnail(){
+if ( has_post_thumbnail() && is_page()) {
+echo '<section><p>';
+the_post_thumbnail( 'masthead-image', array('class' => 'img-rounded aligncenter'));
+echo '</p></section>';
+}
+}
+add_action('masthead_hook','masthead_add_thumbnail');
+
 
 function myformatTinyMCE($in)
 {
