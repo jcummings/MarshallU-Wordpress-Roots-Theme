@@ -118,13 +118,6 @@ echo '</p></section>';
 }
 add_action('masthead_hook','masthead_add_thumbnail');
 
-function masthead_add_slider(){
-	if (is_front_page() && !has_post_thumbnail()){
-		$masthead_slider = wooslider( array( 'slider_type' => 'mastheadslides' ));
-}
-}
-add_action('masthead_hook','masthead_add_slider');
-
 function myformatTinyMCE($in)
 {
  $in['wpautop']=true;
