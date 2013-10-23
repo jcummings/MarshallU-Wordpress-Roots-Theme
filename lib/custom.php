@@ -11,10 +11,8 @@ function enqueue_csesearchbox() {
 add_action( 'wp_enqueue_scripts', 'enqueue_csesearchbox' );
 
 function enqueue_jsapi() {
-	wp_register_script( 'jsapi', '//www.google.com/jsapi',
-		array( 'jquery' ),
-		'1.0' );
-	wp_enqueue_script( 'jsapi', '//www.google.com/jsapi', array( 'jquery' ), '1.0', false );
+	wp_register_script( 'jsapi', '//www.google.com/jsapi', 'jquery');
+	wp_enqueue_script( 'jsapi', '//www.google.com/jsapi', 'jquery' , false );
 }
 add_action( 'wp_enqueue_scripts', 'enqueue_jsapi' );
 

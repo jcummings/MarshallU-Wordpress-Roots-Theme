@@ -25,14 +25,6 @@ document.write('<a href="//muwww-new.marshall.edu/go/index.php?action=shorturl&u
   </div>
   </footer>
 <?php roots_footer_after(); ?>
-<?php if (GOOGLE_ANALYTICS_ID): ?>
-<script>
-  var _gaq=[['_setAccount','<?php echo GOOGLE_ANALYTICS_ID; ?>'],['_trackPageview']];
-  (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
-    g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
-    s.parentNode.insertBefore(g,s)}(document,'script'));
-</script>
-<?php endif; ?>
 <script>
  google.load('search', '1');
   google.setOnLoadCallback(function() {
