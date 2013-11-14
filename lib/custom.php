@@ -160,3 +160,30 @@ if (!CUSTOM_TAGS) {
                           );				  				  
 
 }
+
+//Functions for modifying the default login pages
+function my_login_logo() { ?>
+    <style type="text/css">
+        body.login div#login h1 a {
+            background-image: url(<?php echo get_bloginfo( 'template_directory' ) ?>/images/mulogo.png);
+            padding-bottom: 30px;
+        }
+    </style>
+<?php }
+add_action( 'login_enqueue_scripts', 'my_login_logo' );
+
+
+function my_login_logo_url() {
+    return 'http://www.marshall.edu';
+}
+add_filter( 'login_headerurl', 'my_login_logo_url' );
+
+function my_login_logo_url_title() {
+    return 'Marshall University';
+}
+add_filter( 'login_headertitle', 'my_login_logo_url_title' );
+
+function my_login_stylesheet() { ?>
+    <link rel="stylesheet" id="custom_wp_admin_css"  href="<?php echo get_bloginfo( 'stylesheet_directory' ) . '/assets/css/style-login.css'; ?>" type="text/css" media="all" />
+<?php }
+add_action( 'login_enqueue_scripts', 'my_login_stylesheet' );
