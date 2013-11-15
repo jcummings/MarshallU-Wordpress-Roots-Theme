@@ -65,36 +65,38 @@ remove_submenu_page( 'users.php', 'user-new.php' );
 //Remove Default Widgets
 // disable default dashboard widgets
 function disable_default_dashboard_widgets() {
-
-	remove_meta_box('dashboard_recent_comments', 'dashboard', 'core');
-	
+	remove_meta_box( 'dashboard_quick_press', 'dashboard', 'normal' );
 }
 add_action('admin_menu', 'disable_default_dashboard_widgets');
 
 //Add custom widgets
-function muroots_dashboard_widget_wordpress() {
-	echo '<h4>WordPress Resources</h4><p><a href="http://www.marshall.edu/lynda/">Lynda.com</a> has an extensive collection of WordPress Tutorials designed for users of all experience levels. Simply log in with your MU ID username and password to get started.</p><p><a href="http://codex.wordpress.org/Main_Page">WordPress Codex</a> is the online manual for WordPress and a living repository for WordPress information and documentation.</p><p><a href="http://digwp.com/">Digging into WordPress</a> is a blog by Chris Coyier &amp; Jeff Starr with searchable content, quick tips, and copy &amp; pasteable code.</p>
+function muroots_dashboard_widget_coding() {
+	echo '
+	<p><a href="http://www.marshall.edu/webguide"><strong>Online Branding Standards and Resources</strong></a> provides Marshall University content creators with guidance on appropriate use of the Marshall University brand online.</p>
+	<p><a href="http://twitter.github.com/bootstrap/"><strong>Bootstrap</strong></a> is a simple and flexible front-end framework for popular user interface components and interactions. <strong>It is also the toolkit on which the Marshall University websites are built upon.</strong></p>
+	<p><a href="http://www.rootstheme.com/"><strong>Roots Theme</strong></a> is the base theme on which the MU Roots theme is built upon. This theme is a starting WordPress theme based on HTML5 Boilerplate &amp; Bootstrap from Twitter.</p>
+	<p><a href="http://www.marshall.edu/lynda/"><strong>Lynda.com</strong></a> has an extensive collection of WordPress Tutorials designed for users of all experience levels. Simply log in with your MU ID username and password to get started.</p><p><a href="http://codex.wordpress.org/Main_Page"><strong>WordPress Codex</strong></a> is the online manual for WordPress and a living repository for WordPress information and documentation.</p>
+	<p><a href="http://docs.woothemes.com/document/wooslider/"><strong>WooSlider</strong></a> is a fully responsive content slider and is automatically activated when a WordPress site is created.</p>
 	';
 }
-function muroots_dashboard_widget_coding() {
-echo '<p><a href="http://www.html5rocks.com/en/">HTML5ROCKS</a> HTML5 includes the fifth revision of the HTML markup language, CSS3, and a series of JavaScript APIs. HTML5ROCKs is an open source and community driven collection of articles, tutorials, case studies, and demos that show you how to use the HTML5 features.</p>
-<p><a href="http://twitter.github.com/bootstrap/">Bootstrap, from Twitter</a> is a simple and flexible HTML, CSS, and Javascript for popular user interface components and interactions. <strong>It is also the toolkit on which the Marshall University websites are being built upon.</strong></p>
-<p><a href="http://www.rootstheme.com/">Roots Theme</a> is the base theme on which the MU Roots theme is built upon. This theme is a starting WordPress theme based on HTML5 Boilerplate &amp; Bootstrap from Twitter.</p>';
-}
 function add_muroots_dashboard_widget() {
-	wp_add_dashboard_widget('muroots_dashboard_widget_wordpress', 'WordPress Resources', 'muroots_dashboard_widget_wordpress');
-	wp_add_dashboard_widget('muroots_dashboard_widget_coding', 'Coding Resources', 'muroots_dashboard_widget_coding');
+	wp_add_dashboard_widget('muroots_dashboard_widget_coding', 'Marshall University WordPress Resources', 'muroots_dashboard_widget_coding');
 
 // Global the $wp_meta_boxes variable (this will allow us to alter the array)
 global $wp_meta_boxes;
 // Then we make a backup of your widget
-$my_widget = $wp_meta_boxes['dashboard']['normal']['core']['muroots_dashboard_widget_coding'];
+$normal_dashboard = $wp_meta_boxes['dashboard']['normal']['core'];
+$mu_dashboard_backup = array('muroots_dashboard_widget_coding' => $normal_dashboard['muroots_dashboard_widget_coding']);
+
 // We then unset that part of the array
-unset($wp_meta_boxes['dashboard']['normal']['core']['muroots_dashboard_widget_coding']);
+unset($normal_dashboard['muroots_dashboard_widget_coding']);
+
 // Now we just add your widget back in
-$wp_meta_boxes['dashboard']['side']['core']['muroots_dashboard_widget_coding'] = $my_widget;
+	$sorted_dashboard = array_merge( $mu_dashboard_backup, $normal_dashboard );
+	$wp_meta_boxes['dashboard']['normal']['core'] = $sorted_dashboard;
 }
 add_action('wp_dashboard_setup', 'add_muroots_dashboard_widget');
+
 
 // Add features images to pages
 if ( function_exists( 'add_theme_support' ) ) { 
