@@ -25,13 +25,4 @@ document.write('<a href="//muwww-new.marshall.edu/go/index.php?action=shorturl&u
   </div>
   </footer>
 <?php roots_footer_after(); ?>
-<script>
- google.load('search', '1');
-  google.setOnLoadCallback(function() {
-    google.search.CustomSearchControl.attachAutoCompletion(
-      '010773603321931097386:xheprsjc1a8',
-      document.getElementById('q'),
-      'cse-search-box');
-  });
-  </script>
 <?php wp_footer(); ?>
