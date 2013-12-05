@@ -10,19 +10,11 @@
 <form name="reportform" method="post" action="/process_report.php" style="overflow-x:scroll;">
 	<fieldset>
 		<div class="modal-body">
-			<input type="hidden" name="email_to" value="<?php
-				$blogusers = get_users();
-				foreach ($blogusers as $user) {
-					if (!empty( $user->user_email)) {
-						echo $user->user_email . ', ';
-					}
-			}?>">
-			<input type="hidden" name="site_name" value="<?php bloginfo('name'); ?>">
-			<input type="hidden" name="page_title" value="<?php wp_title('',true); ?>">
-			<label>Name (Optional)</label>
+		
+			<label>Name</label>
 			<input type="text" id="name" name="name">
-			
-			<label>Email (Optional)</label>
+
+			<label>Email</label>
 			<input type="text" id="email" name="email">
 			
 			<div style="display: none">
@@ -35,6 +27,7 @@
 			<script type="text/javascript"
 				src="/verify.js">
 			</script>
+
 		</div>
 		<div class="modal-footer">
 			<input type="hidden" name="url" id="url" value="" />
@@ -43,4 +36,5 @@
 		</div>
 	</fieldset>
 	</form>
+</div>
 </div>
