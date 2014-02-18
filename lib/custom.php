@@ -58,15 +58,21 @@ add_action('admin_menu', 'disable_default_dashboard_widgets');
 //Add custom widgets
 function muroots_dashboard_widget_coding() {
 	echo '
-	<p><a href="http://www.marshall.edu/webguide"><strong>Online Branding Standards and Resources</strong></a> provides Marshall University content creators with guidance on appropriate use of the Marshall University brand online.</p>
+	<table>
+		<tr>
+		<td>
+		<img src="'.get_stylesheet_directory_uri().'/assets/img/med-logo.png" /></td>
+		<td>
+	<p><a href="http://www.marshall.edu/webguide"><strong>Online Branding Standards and Resources</strong></a> provides Marshall University content creators with guidance on appropriate use of the Marshall University brand online.</p></td>
+	</tr></table>
+	
 	<p><a href="http://twitter.github.com/bootstrap/"><strong>Bootstrap</strong></a> is a simple and flexible front-end framework for popular user interface components and interactions. <strong>It is also the toolkit on which the Marshall University websites are built upon.</strong></p>
-	<p><a href="http://www.rootstheme.com/"><strong>Roots Theme</strong></a> is the base theme on which the MU Roots theme is built upon. This theme is a starting WordPress theme based on HTML5 Boilerplate &amp; Bootstrap from Twitter.</p>
-	<p><a href="http://www.marshall.edu/lynda/"><strong>Lynda.com</strong></a> has an extensive collection of WordPress Tutorials designed for users of all experience levels. Simply log in with your MU ID username and password to get started.</p><p><a href="http://codex.wordpress.org/Main_Page"><strong>WordPress Codex</strong></a> is the online manual for WordPress and a living repository for WordPress information and documentation.</p>
-	<p><a href="http://docs.woothemes.com/document/wooslider/"><strong>WooSlider</strong></a> is a fully responsive content slider and is automatically activated when a WordPress site is created.</p>
+
+	<p><a href="http://www.marshall.edu/lynda/"><strong>Lynda.com</strong></a> has an extensive collection of WordPress Tutorials designed for users of all experience levels. Simply log in with your MU ID username and password to get started.</p><p><a href="http://codex.wordpress.org/Main_Page"><strong>WordPress Codex</strong></a> is the online manual for WordPress and a living repository for WordPress information and documentation.</p><p><a href="http://docs.woothemes.com/document/wooslider/"><strong>WooSlider</strong></a> is a fully responsive content slider and is automatically activated when a WordPress site is created.</p>
 	';
 }
 function add_muroots_dashboard_widget() {
-	wp_add_dashboard_widget('muroots_dashboard_widget_coding', 'Marshall University WordPress Resources', 'muroots_dashboard_widget_coding');
+	wp_add_dashboard_widget('muroots_dashboard_widget_coding', 'Marshall University Site Development Resources', 'muroots_dashboard_widget_coding');
 
 // Global the $wp_meta_boxes variable (this will allow us to alter the array)
 global $wp_meta_boxes;
@@ -82,7 +88,6 @@ unset($normal_dashboard['muroots_dashboard_widget_coding']);
 	$wp_meta_boxes['dashboard']['normal']['core'] = $sorted_dashboard;
 }
 add_action('wp_dashboard_setup', 'add_muroots_dashboard_widget');
-
 
 // Add features images to pages
 if ( function_exists( 'add_theme_support' ) ) { 
@@ -175,3 +180,122 @@ function my_login_stylesheet() { ?>
     <link rel="stylesheet" id="custom_wp_admin_css"  href="<?php echo get_bloginfo( 'stylesheet_directory' ) . '/assets/css/style-login.css'; ?>" type="text/css" media="all" />
 <?php }
 add_action( 'login_enqueue_scripts', 'my_login_stylesheet' );
+
+
+add_filter( 'vfb_skip_empty_fields', 'vfb_filter_skip_empty_fields', 10, 2 );
+function vfb_filter_skip_empty_fields( $setting, $form_id ){    
+    return true;
+}
+
+function my_admin_theme_style() {
+    wp_enqueue_style('my-admin-style', get_template_directory_uri() . '/assets/css/admin.css');
+}
+
+add_action('admin_enqueue_scripts', 'my_admin_theme_style');
+
+
+// Custom admin dashboard header logo
+add_action('admin_head', 'rvam_custom_admin_logo');
+function rvam_custom_admin_logo() {
+    echo '<style type="text/css">#icon-index { background-image: url('.get_template_directory_uri() .'/assets/img/custom-logo.png) !important; background-position: 0 0;}</style>';
+}
+
+// Modify the admin footer text
+add_filter('admin_footer_text', 'rvam_modify_footer_admin');
+function rvam_modify_footer_admin ()
+{
+    echo '<span id="footer-thankyou">Marshall University <a href="http://www.marshall.edu" target="_blank">Information Technology</a></span>';
+}
+
+// Add theme info box into WordPress Dashboard
+add_action('wp_dashboard_setup', 'rvam_add_dashboard_widgets' );
+function rvam_add_dashboard_widgets() {
+    add_meta_box('wp_dashboard_widget', 'Theme Details', 'rvam_theme_info', 'dashboard', 'side', 'high');    
+}
+ 
+function rvam_theme_info() {
+    echo "<ul>
+	<li><strong>Developed By:</strong> John Cummings and Eden Parker</li>
+	<li><strong>Website:</strong> <a href='http://www.marshall.edu'>www.marshall.edu</a></li>
+	<li><strong>Contact:</strong> <a href='mailto:cumming7@marshall.edu'>john.cummings@marshall.edu</a></li>
+	</ul>
+	<hr/>
+	<h4>Frequently Asked Questions about our theme</h4>
+	<br/>
+	<strong>Where is the Plugin and Theme Menu?</strong>
+		<blockquote>
+		  <p>Because there are several hundred sites in our system that share a variety of elements of the codebase, shared settings like plugins and themes are disabled for individual site administrators.  Don't worry though, there are a lot of popular plugins already installed and available, and getting a new one added for your site usually just requires an email to the service desk asking that we turn it on for you.</p><p>Theme installation and switching is disabled because....well, that was really the point of implementing a content management system.  It allows everyone to share common design elements so that there is some consistency throughout the MU website.</p>
+		</blockquote>
+		
+		<hr/>
+		<strong>How do I add a new user/change my password/edit my user profile/access the Users menu/etc.?</strong>
+		<blockquote>
+		  <p>The local account database is only used to match your username with the sites that you have access to.  All user information, including who has access to edit your site, is controlled by membership in various Active Directory groups.  All of our user authentication is also done via Active Directory, which is what enables you to access your site using your MUNET credentials.</p>
+		<p>Even if the 'Users' menu were accessible, attempting to add users in this way would have no effect on their ability to access your site.  Users who need administrative access to a content management system site do need to make sure that their user account is in the right Active Directory group.  If you're not sure how to get this change made, just email the IT Service Desk, and they can open a ticket to have any user membership changes you need done for you.</p>
+		</blockquote>
+		
+		<hr/>
+		<strong>I really don't like the way that this color/menu/button/font/etc. looks. Is there any way I can change it?</strong>
+		<blockquote>
+		  <p>We do discourage individual sites from trying to develop their own 'look'.  While we understand each departments desire for a unique identity, our site template are designed with consistency for the end user in mind.  In addition, things like colors, font sizes, background gradients, and line spacing have been developed in accordance with accessibility guidelines, and all of the pages that are created through our system are immediately smart phone and tablet capable.  When you create a page, it will look similar regardless of the device a user is using to access it.</p><p>We offer full support for our official theme - if something goes wrong, we'll make sure to fix it as quickly as possible. While we will try to work with requests for custom theme/template development, anything beyond basic modifications will require discussion with the department so that the project can be scoped, appropriate resources allocated, and budgeted.</p>
+		</blockquote>";
+}
+
+//Disable the user profile menu
+add_action( 'admin_init', 'stop_access_profile' );
+function stop_access_profile() {
+    remove_menu_page( 'profile.php' );
+    remove_submenu_page( 'users.php', 'profile.php' );
+    if(IS_PROFILE_PAGE === true) {
+        header( 'Location: http://www.marshall.edu/editing-user-information/' ) ;
+    }
+}
+
+//Change the upload folder by default
+update_option('uploads_use_yearmonth_folders', 0);
+	if (!is_multisite()) {
+		update_option('upload_path', 'media');
+	} 
+	else {
+	    update_option('upload_path', '');
+	}
+
+
+//Customize the Wordpress Admin Bar
+function remove_admin_bar_links() {
+    global $wp_admin_bar;
+    $wp_admin_bar->remove_menu('about');            // Remove the about WordPress link
+    $wp_admin_bar->remove_menu('wporg');            // Remove the WordPress.org link
+    $wp_admin_bar->remove_menu('documentation');    // Remove the WordPress documentation link
+    $wp_admin_bar->remove_menu('support-forums');   // Remove the support forums link
+    $wp_admin_bar->remove_menu('feedback');         // Remove the feedback link
+    //$wp_admin_bar->remove_menu('my-account');       // Remove the user details tab
+    
+    $wp_admin_bar->add_menu(array(
+    	'parent'=>false,
+    	'id'=>'get_help',
+    	'title'=>__('Need help?'),
+    	'href'=>''
+    ));
+
+	$serviceDeskURL = 'http://www.marshall.edu/inforesources/';
+	$wp_admin_bar->add_menu(array(
+	'parent' => 'get_help',
+	'id' => 'service_desk',
+	'title' => __('Contact the IT Service Desk'),
+	'href' => $serviceDeskURL
+	));
+	
+	$lyndaURL = 'http://lynda.marshall.edu';
+	$wp_admin_bar->add_menu(array(
+	'parent' => 'get_help',
+	'id' => 'lynda_help',
+	'title' => __('Lynda.com via lynda.marshall.edu'),
+	'href' => $lyndaURL
+	));	
+	
+}
+add_action( 'wp_before_admin_bar_render', 'remove_admin_bar_links' );
+
+
+

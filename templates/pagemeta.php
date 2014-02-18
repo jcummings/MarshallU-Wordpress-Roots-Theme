@@ -11,6 +11,8 @@
 	<fieldset>
 		<div class="modal-body">
 		
+			<p><strong>NOTE:</strong> This form should be used to report problems with the content of this page.</p>
+		
 			<label>Name</label>
 			<input type="text" id="name" name="name">
 
