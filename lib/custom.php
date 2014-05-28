@@ -35,7 +35,7 @@ function roots_register_sidebars_footer() {
 add_action('widgets_init', 'roots_register_sidebars_footer');
 
 // This function removes the Super Admin Menu from being visible to anyone who can't manage the network. 
-add_action( 'admin_init', 'remove_menu_pages' );
+add_action( 'admin_menu', 'remove_menu_pages' );
 function remove_menu_pages() {
 // If the user does not have access to add new users
 if(!current_user_can('manage_network')) {
@@ -242,7 +242,7 @@ function rvam_theme_info() {
 }
 
 //Disable the user profile menu
-add_action( 'admin_init', 'stop_access_profile' );
+add_action( 'admin_menu', 'stop_access_profile' );
 function stop_access_profile() {
     remove_menu_page( 'profile.php' );
     remove_submenu_page( 'users.php', 'profile.php' );
@@ -259,7 +259,6 @@ update_option('uploads_use_yearmonth_folders', 0);
 	else {
 	    update_option('upload_path', '');
 	}
-
 
 //Customize the Wordpress Admin Bar
 function remove_admin_bar_links() {
