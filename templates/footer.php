@@ -7,7 +7,7 @@
                 <div class="span6">
           <p class="aligncenter"><small>Marshall University &bull; One John Marshall Drive &bull; Huntington, WV 25755 &bull; <a href="tel:18006423463">1-800-642-3463</a><br />
             <a href="http://www.marshall.edu/accreditation">Accreditation Info</a> &bull; <a href="http://www.marshall.edu/mumobile/">Mobile App</a> &bull; <script>
-document.write('<a href="//muwww-new.marshall.edu/go/index.php?action=shorturl&url=' + document.URL + '">Short Link To This Page</a>');
+document.write('<a href="//www.marshall.edu/go/index.php?action=shorturl&url=' + document.URL + '">Short Link To This Page</a>');
 </script></small></p>
         </div>
         <div class="span3">

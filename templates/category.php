@@ -5,19 +5,16 @@
   <?php get_search_form(); ?>
 <?php endif; ?>
 
-<?php while (have_posts()) : the_post(); ?>
+<?php while (have_posts()) : the_post(); ?>asf
   <article <?php post_class(); ?>>
     <header>
       <h2><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
       <small><?php get_template_part('templates/entry-meta'); ?></small>
     </header>
-    <div class="entry-summary" >
-    	<?php if ( has_post_thumbnail() ) {
-			the_post_thumbnail('thumbnail', array('class' => 'alignleft wp-post-image', 'style' => 'clear: both'));
-		} ?>
+    <div class="entry-summary">
       <?php the_excerpt(); ?>
     </div>
-    <footer  style="clear: both">
+    <footer>
       <?php //the_tags('<ul class="entry-tags"><li>','</li><li>','</li></ul>'); ?>
     </footer>
   </article>
